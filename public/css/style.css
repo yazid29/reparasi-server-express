@@ -1,0 +1,12 @@
+body, html {
+    height: 100%; /* Pastikan body dan html memiliki tinggi penuh */
+    margin: 0; /* Hilangkan margin default */
+    display: flex; /* Gunakan Flexbox pada body */
+    justify-content: center; /* Posisikan elemen di tengah horizontal */
+    align-items: center; /* Posisikan elemen di tengah vertikal */
+}
+
+.center-content {
+    text-align: center; /* Menempatkan teks di tengah */
+    font-size: 24px; /* Ukuran font untuk teks */
+}
