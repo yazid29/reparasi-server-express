@@ -61,7 +61,7 @@ const updateUser =  asyncHandler(async (req, res) => {
 
     const updatedUser = await user.save();
 
-    res.json({message: `${updatedUser.id} updated`});
+    res.json({message: `${id} updated`});
 });
 
 const deleteUser = asyncHandler(async (req, res) => {
