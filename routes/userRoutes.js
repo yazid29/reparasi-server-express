@@ -7,5 +7,5 @@ router.route("/")
     .post(usersController.createUser)
     .patch(usersController.updateUser)
     .delete(usersController.deleteUser);
-
+router.route("/:id").get(usersController.getUsersById);
 module.exports = router;

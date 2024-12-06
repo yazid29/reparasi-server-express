@@ -10,7 +10,14 @@ const getAllUsers = asyncHandler(async (req, res) => {
   }
   res.status(200).json(users);
 });
-
+const getUsersById = asyncHandler(async (req, res) => {
+  const id = req.params.id;
+  const users = await User.findById(id).select("-password").lean().exec();
+  if (!users){
+    return res.status(404).json({ message: "No users found" });
+  }
+  res.status(200).json(users);
+});
 const createUser = asyncHandler(async (req, res) => {
   const { username, password, roles } = req.body;
   if (!username || !password || !Array.isArray(roles) || !roles.length) {
@@ -101,4 +108,5 @@ module.exports = {
   createUser,
   updateUser,
   deleteUser,
+  getUsersById
 };
