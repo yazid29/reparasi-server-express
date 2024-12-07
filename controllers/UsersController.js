@@ -50,11 +50,11 @@ const updateUser = asyncHandler(async (req, res) => {
   if (
     !id ||
     !username ||
-    !Array.isArray(roles) ||
-    typeof active !== "boolean"
+    !Array.isArray(roles)
   ) {
     return res.status(400).json({ message: "All field required" });
   }
+
 
   // validasi existing data
   const user = await User.findById(id).exec();
@@ -73,8 +73,7 @@ const updateUser = asyncHandler(async (req, res) => {
 
   user.username = username;
   user.roles = roles;
-  user.active = active;
-
+  user.active = active == "true" ? true : false;
   // jika ingin meng-update password
   if (password) {
     user.password = await bcrypt.hash(password, 10);
