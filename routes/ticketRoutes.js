@@ -9,5 +9,6 @@ router.route("/")
     .post(ticketsController.createTicket)
     .patch(ticketsController.updateTicket)
     .delete(ticketsController.deleteTicket);
+router.route("/user").get(ticketsController.getAllTicketUsers);
 router.route("/:id").get(ticketsController.getByIdTicket);
 module.exports = router;

@@ -93,11 +93,18 @@ const deleteTicket = asyncHandler(async (req, res) => {
   const reply = `Ticket with ID ${id} deleted`;
   res.json(reply);
 });
-
+const getAllTicketUsers = asyncHandler(async (req, res) => {
+  const users = await User.find().select("-password").lean();
+  if (!users?.length) {
+    return res.status(404).json({ message: "No users found" });
+  }
+  res.status(200).json(users);
+});
 module.exports = {
   getAllTickets,
   createTicket,
   updateTicket,
   deleteTicket,
   getByIdTicket,
+  getAllTicketUsers
 };
